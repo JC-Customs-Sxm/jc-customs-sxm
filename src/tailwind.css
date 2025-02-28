@@ -1,0 +1,411 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Wave Divider */
+@keyframes waveMovement {
+  0% {
+    transform: translateX(-100%) scaleX(1);
+  }
+
+  50% {
+    transform: translateX(0%) scaleX(1.05);
+  }
+
+  100% {
+    transform: translateX(100%) scaleX(1);
+  }
+}
+
+/* Preloading Images (Optional for optimization) */
+#preload {
+  display: none;
+}
+
+/* Wave Divider Animation Styles */
+.animate-wave-divider {
+  animation: waveMovement 2s ease-in-out infinite;
+  background: linear-gradient(135deg, #39ff14, #00c8ff);
+  height: 10px;
+  width: 100%;
+  border-radius: 50%;
+  position: relative;
+  display: block;
+  margin-top: 50px;
+}
+
+/* Parallax Effect for Cards */
+.parallax {
+  will-change: transform;
+  transition: transform 0.3s ease-out;
+}
+
+/* Text Area Styles */
+.textarea {
+  font-size: 24px;
+  display: block;
+  color: #1d1f20;
+  opacity: 0;
+  font-family: "Luckiest Guy", cursive;
+}
+
+.textarea span {
+  display: block;
+}
+
+.textarea span:nth-child(1) {
+  margin-left: 7px;
+  transform: translateX(-100px);
+  transition: all 400ms 400ms;
+}
+
+.textarea span:nth-child(2) {
+  z-index: 12;
+  font-size: 160px;
+  color: #1d1f20;
+  transform: translateX(-100px);
+  transition: all 400ms 600ms;
+  position: relative;
+}
+
+.textarea span:nth-child(3) {
+  z-index: 9;
+  position: absolute;
+  display: block;
+  font-size: 120px;
+  margin: -135px 0 0 300px;
+  transform: translateX(-100px);
+  transition: all 400ms 700ms;
+}
+
+.textarea span:nth-child(4) {
+  color: #ef3a55;
+  margin-top: -45px;
+  font-size: 130px;
+  transform: translateX(-100px);
+  transition: all 400ms 800ms;
+}
+
+.running_man.active .textarea span {
+  transform: translateX(0px);
+  opacity: 0.95;
+}
+
+/* Neon Green Text */
+.neon-green-text {
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 15px #39ff14,
+    0 0 20px #39ff14;
+}
+
+/* Glass Effect Button */
+.glass-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 15px #39ff14;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for Glass Button */
+.glass-button:hover {
+  background: rgba(57, 255, 20, 0.2);
+  border-color: #39ff14;
+  box-shadow: 0 0 15px #39ff14;
+}
+
+/* Focus effect for Glass Button */
+.glass-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(57, 255, 20, 0.5);
+}
+
+/* Parallax Scroll Effect for Offer Cards */
+.offer-card {
+  position: relative;
+  transition: transform 0.3s ease-out;
+}
+
+/* For Hover Effects on Cards */
+.offer-card:hover {
+  transform: translateY(-15px);
+}
+
+/* Custom Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #333;
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+/* Slider Thumb (Round dot) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #39ff14;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Slider Thumb for Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #39ff14;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Active Track on Hover */
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: #39ff14;
+}
+
+/* Slide Rotate Animation */
+@keyframes slide-rotate-hor-t-fwd {
+  0% {
+    transform: translateY(0) translateZ(0) rotateX(0deg);
+    transform-origin: bottom center;
+  }
+
+  100% {
+    transform: translateY(-150px) translateZ(130px) rotateX(-90deg);
+    transform-origin: bottom center;
+  }
+}
+
+/* Add custom cursor styles in Tailwind */
+#cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  pointer-events: none;
+  border-radius: 100%;
+  transition: box-shadow 0.3s, transform 0.3s;
+  transform-origin: center center;
+}
+
+#cursor .outer {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 2px solid #39ff14;
+  transition: border 0.3s;
+}
+
+#cursor .inner {
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  width: calc(100% - 22px);
+  height: calc(100% - 22px);
+  border-radius: 100%;
+  background-color: #39ff14;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#cursor .inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-radius: 50%;
+  border-left-color: #39ff14;
+  border-right-color: #39ff14;
+  animation: arrow-spin 0.85s cubic-bezier(0.2, 0.8, 0.9, 0.1) infinite reverse;
+}
+
+/* Spinning arrow animation */
+@keyframes arrow-spin {
+  100% {
+    transform: rotate(179deg);
+  }
+}
+
+/* Active state styles */
+#cursor.active .outer {
+  border-color: #3bff1a;
+}
+
+#cursor.active .inner {
+  opacity: 1;
+}
+
+/* Cursor Styles */
+#cursor {
+  width: 55px;
+  height: 55px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#cursor .outer {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #39ff14;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#cursor.highlighting .outer {
+  box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
+  transform: scale(1.2);
+}
+
+/* Text Elements to Highlight */
+.highlight-text {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.highlight-text:hover {
+  color: #39ff14;
+  background-color: rgba(57, 255, 20, 0.1);
+}
+
+/* Hide cursor on hover */
+.hover-target:hover #cursor {
+  visibility: hidden;
+}
+
+/* Optional: Target text-specific styles */
+.hover-target {
+  cursor: text;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.hover-target:hover {
+  color: #007bff;
+}
+
+/* Hovering styles */
+#cursor.hovering .outer {
+  border-width: 3px;
+}
+
+/* Cursor hidden on mobile */
+@media (max-width: 768px) {
+  #cursor {
+    display: none;
+  }
+}
+
+/* Responsive Adjustments Using Tailwind Prefixes */
+
+/* Container Padding */
+.container {
+  @apply px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12;
+  /* Adjust as needed */
+}
+
+/* Font Size Adjustments */
+.text-2xl {
+  @apply text-2xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl;
+  /* Adjust as needed */
+}
+
+.text-3xl {
+  @apply text-3xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl;
+  /* Adjust as needed */
+}
+
+.text-4xl {
+  @apply text-4xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl;
+  /* Adjust as needed */
+}
+
+.text-5xl {
+  @apply text-5xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl;
+  /* Adjust as needed */
+}
+
+/* Grid Layout Adjustments */
+.grid-cols-1 {
+  @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  /* Adjust as needed */
+}
+
+.grid-cols-2 {
+  @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-2;
+  /* Adjust as needed */
+}
+
+.grid-cols-3 {
+  @apply grid-cols-1;
+  /* Adjust as needed */
+}
+
+/* Padding Adjustments */
+.p-8 {
+  @apply p-4 sm:p-6 md:p-8;
+  /* Adjust as needed */
+}
+
+/* Gap Adjustments */
+.gap-12 {
+  @apply gap-4 sm:gap-6 md:gap-8;
+  /* Adjust as needed */
+}
+
+/* Glass Button Adjustments */
+.glass-button {
+  @apply px-3 py-2 text-sm sm:px-4 sm:py-3 sm:text-base;
+  /* Adjust as needed */
+}
+
+/* Offer Card Adjustments */
+.offer-card {
+  @apply p-3 sm:p-4 md:p-5;
+  /* Adjust as needed */
+}
+
+.offer-card h3 {
+  @apply text-lg sm:text-xl md:text-2xl;
+  /* Adjust as needed */
+}
+
+.offer-card p {
+  @apply text-sm sm:text-base;
+  /* Adjust as needed */
+}
+
+/* Recent Projects Image Adjustments */
+.recent-projects img {
+  @apply h-32 sm:h-40 md:h-52;
+  /* Adjust as needed */
+}

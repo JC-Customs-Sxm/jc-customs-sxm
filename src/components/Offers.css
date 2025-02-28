@@ -1,0 +1,287 @@
+/* General section styles */
+.offers {
+  background-color: #000;
+  /* Black background */
+  color: #fff;
+  /* White text for readability */
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #39ff14;
+  /* Neon Green for header text */
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Grid layout for the offer cards */
+.offer-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Offer card styling */
+.offer-card {
+  background-color: #333;
+  /* Dark gray background for cards */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  /* Start as invisible */
+  transform: translateY(50px);
+  /* Start position */
+  animation: fadeInUp 0.6s ease-in-out forwards;
+}
+
+/* Hover effects for the cards */
+.offer-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon styling */
+.icon {
+  font-size: 3rem;
+  color: #39ff14;
+  /* Neon green for icons */
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  /* White color for heading text */
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  color: #bbb;
+  /* Light gray for the body text */
+  line-height: 1.5;
+}
+
+/* Keyframe animation to make cards fade in and move up */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    /* Move cards up to their final position */
+  }
+}
+
+/* Animation delay for each card */
+.offer-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.offer-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.offer-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.offer-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.offer-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.offer-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Glass button styles */
+.glass-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 15px #39ff14;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(57, 255, 20, 0.2);
+  border-color: #39ff14;
+  box-shadow: 0 0 15px #39ff14;
+}
+
+/* Global cursor styles */
+#cursor {
+  border-radius: 100%;
+  box-shadow: 0 0 22px 3px #39ff14; /* Neon green color */
+  height: 55px;
+  width: 55px;
+  position: fixed;
+  z-index: 99999;
+  top: -100%;
+  left: -100%;
+  transition: box-shadow 0.3s ease;
+  pointer-events: none;
+  transform: scale(0.7);
+  transform-origin: 0 0 0;
+}
+
+#cursor .outer {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  width: calc(100% + 28px);
+  height: calc(100% + 28px);
+  border-radius: 100%;
+  border: 1px solid #39ff14; /* Outer ring color */
+  transition: border 0.3s;
+  z-index: -1;
+}
+
+#cursor .inner {
+  height: calc(100% - 22px);
+  left: 11px;
+  opacity: 0;
+  position: absolute;
+  top: 11px;
+  transform: rotate(0deg);
+  width: calc(100% - 22px);
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+#cursor .inner:before {
+  border: 2px solid transparent;
+  border-left-color: #39ff14;
+  border-right-color: #39ff14;
+  border-radius: 100%;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#cursor.hovering {
+  box-shadow: 0 0 22px 3px #39ff14;
+}
+
+#cursor.hovering .inner {
+  opacity: 1;
+  animation: arrow-spin 0.85s cubic-bezier(0.2, 0.8, 0.9, 0.1) infinite reverse;
+}
+
+#cursor.hovering .outer {
+  border-width: 3px;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+#cursor.hovering .outer:before,
+#cursor.hovering .outer:after {
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: 3px;
+  background: #39ff14;
+  transform: rotate(-45deg);
+  transition: none;
+}
+
+#cursor.hovering .outer:before {
+  left: 5px;
+  top: -2px;
+}
+
+#cursor.hovering .outer:after {
+  right: 5px;
+  bottom: -2px;
+}
+
+#cursor.active {
+  box-shadow: 0 0 22px 3px #33cc00;
+}
+
+#cursor.active .outer {
+  border: 1px solid #33cc00;
+}
+
+#cursor.active .hovering .outer {
+  border-color: #33cc00 transparent;
+}
+
+#cursor.active .hovering .inner:before {
+  border-left-color: #33cc00;
+  border-right-color: #33cc00;
+}
+
+/* Keyframe for arrow spin animation */
+@keyframes arrow-spin {
+  100% {
+    transform: rotate(179deg);
+  }
+}
+
+@media (max-width: 768px) {
+  #cursor {
+    display: none;
+  }
+}
+
+/* Styling for the rest of the page as per the design */
+.offers {
+  background-color: #000;
+  color: #fff;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Hover Effect for Offer Cards */
+.offer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.offer-card:hover .icon {
+  transform: translateY(-10px); /* Lift icon on hover */
+}
+
+.offer-card:hover h3,
+.offer-card:hover p {
+  color: #39ff14; /* Change text color on hover */
+}
