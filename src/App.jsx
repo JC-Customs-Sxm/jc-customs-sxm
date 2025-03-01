@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
 import Cursor from "./components/Cursor";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             </Routes>
           </main>
           <Cursor />
+          <Analytics /> {/* Add Analytics component here */}
         </div>
       </BrowserRouter>
     </I18nextProvider>
