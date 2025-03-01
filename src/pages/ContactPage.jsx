@@ -86,30 +86,40 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen">
       {/* Cover Photo Section */}
-      <div className="relative w-full h-auto overflow-hidden mt-8 pt-0">
-        <img
-          src="https://res.cloudinary.com/dehk7msqm/image/upload/v1736025343/Contact_Page_Cover_vtbzgz.jpg"
-          alt="Contact Cover"
-          className="w-full h-full object-cover -mt-8"
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50">
-          <div className="text-center">
-            <h1 className="text-white text-5xl font-bold">{t("Contact Us")}</h1>
-            <p className="text-white text-lg mt-4">
-              {t(
-                "Ready to turn your ideas into a stunning website? Let’s work together to bring your vision to life and help your business grow online."
-              )}
-            </p>
-          </div>
+      <div
+        className="relative w-full min-h-[50vh] sm:min-h-screen flex flex-col justify-end text-white overflow-hidden bg-black pb-8" // Reduced pb- to 8
+        style={{
+          backgroundImage:
+            "url('https://res.cloudinary.com/dehk7msqm/image/upload/v1740843391/Contact_Page_Cover_Photo_komigp.png')",
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 z-0"></div>
+
+        {/* Content (Combined heading and paragraph) */}
+        <div className="text-center px-4 relative z-10">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold">
+            {t("Contact Us")}
+          </h1>
+          <p className="text-white text-xs xs:text-sm sm:text-base md:text-lg mt-4">
+            {t(
+              "Ready to turn your ideas into a stunning website? Let's work together to bring your vision to life and help your business grow online."
+            )}
+          </p>
         </div>
       </div>
 
       {/* Contact Section */}
-      <main className="py-16 px-8 grid grid-cols-1 lg:grid-cols-2 gap-0">
+      <main className="py-8 sm:py-16 px-4 sm:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column: Contact Information and Operating Hours */}
-        <div className="bg-black text-[#39FF14] shadow-lg rounded-l-lg p-8 space-y-6 border-2 border-[#39FF14]">
-          <h2 className="text-3xl font-semibold">{t("Contact Information")}</h2>
-          <ul className="space-y-4 text-lg">
+        <div className="bg-black text-[#39FF14] shadow-lg rounded-lg lg:rounded-l-lg lg:rounded-r-none p-6 sm:p-8 space-y-6 border-2 border-[#39FF14]">
+          <h2 className="text-2xl sm:text-3xl font-semibold">
+            {t("Contact Information")}
+          </h2>
+          <ul className="space-y-4 text-base sm:text-lg">
             <li className="flex items-center">
               <FiMail className="mr-2 text-[#39FF14]" />
               <strong>{t("Email:")}</strong> jc.customs.sxm@gmail.com
@@ -125,10 +135,10 @@ const ContactPage = () => {
           </ul>
 
           {/* Operating Hours */}
-          <h2 className="text-2xl font-semibold mt-6">
+          <h2 className="text-xl sm:text-2xl font-semibold mt-6">
             {t("Operating Hours")}
           </h2>
-          <div className="text-lg">
+          <div className="text-base sm:text-lg">
             <p>
               {t("We are available to assist you during the following hours:")}
             </p>
@@ -148,8 +158,8 @@ const ContactPage = () => {
         </div>
 
         {/* Right Column: Contact Form */}
-        <div className="bg-white shadow-lg rounded-r-lg p-8 space-y-6">
-          <h2 className="text-3xl font-semibold text-[#39FF14] text-center">
+        <div className="bg-white shadow-lg rounded-lg lg:rounded-r-lg lg:rounded-l-none p-6 sm:p-8 space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-[#39FF14] text-center">
             {t("Send Us A Message")}
           </h2>
           <form ref={form} onSubmit={sendEmail} className="space-y-6">
@@ -171,7 +181,7 @@ const ContactPage = () => {
             </div>
 
             {/* Name Fields */}
-            <div className="flex gap-8">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
               <div className="w-full relative">
                 <FiUser className="absolute left-3 top-2 text-gray-600" />
                 <input
@@ -195,7 +205,7 @@ const ContactPage = () => {
             </div>
 
             {/* Email and Phone */}
-            <div className="flex gap-8">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
               <div className="w-full relative">
                 <FiMail className="absolute left-3 top-2 text-gray-600" />
                 <input
@@ -222,7 +232,7 @@ const ContactPage = () => {
             <div className="flex flex-col">
               <label
                 htmlFor="budget"
-                className="text-xl font-semibold text-[#39FF14] mb-2"
+                className="text-lg sm:text-xl font-semibold text-[#39FF14] mb-2"
               >
                 {t("Estimated Budget (EUR)")}
               </label>
@@ -278,7 +288,6 @@ const ContactPage = () => {
           </form>
         </div>
       </main>
-
       {/* Faq */}
       <Faq />
 
