@@ -12,8 +12,16 @@ const IsThisYou = () => {
 
     setTimeout(() => {
       if (!toggled) {
-        navigate("/contact");
-        window.scrollTo(0, 0);
+        // Hardcode the language prefix for testing (e.g., "en")
+        const currentLanguage = "en"; // Replace with the actual language if needed
+        // Construct the path with the language prefix
+        const contactPath = `/${currentLanguage}/contact`;
+        // Navigate to the Contact Page
+        navigate(contactPath);
+        // Scroll to top after a slight delay to ensure the page has loaded
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
       }
     }, 300);
   };
