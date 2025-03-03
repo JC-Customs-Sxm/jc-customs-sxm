@@ -51,9 +51,11 @@ const FAQ = () => {
   return (
     <div className="min-h-screen bg-white py-10 px-6">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-center text-neonGreen mb-12">
+        <h1 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-center text-black mb-12">
           {t("FAQHeading")}
         </h1>
+
+        <h2 className="sr-only">Frequently Asked Questions</h2>
 
         <div className="space-y-6">
           {faqData.map((item, index) => (
@@ -87,7 +89,7 @@ const FAQ = () => {
 
               {openIndex === index && (
                 <div className="py-2 px-4">
-                  <p className="text-lg text-neonGreen">{t(item.answer)}</p>
+                  <p className="text-lg text-black">{t(item.answer)}</p>
                 </div>
               )}
             </div>

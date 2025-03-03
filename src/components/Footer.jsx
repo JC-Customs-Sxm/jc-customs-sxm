@@ -46,6 +46,7 @@ const Footer = () => {
         onClick={scrollToTop}
         className="fixed bottom-6 right-6 bg-black text-green-500 p-4 rounded-full shadow-lg hover:bg-gray-800 transition-all"
         style={{ zIndex: 999 }}
+        aria-label={t("Back to top")} // Add this line
       >
         <FaArrowUp size={24} />
       </button>

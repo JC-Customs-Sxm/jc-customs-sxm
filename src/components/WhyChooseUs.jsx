@@ -1,11 +1,21 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import Lottie from "lottie-react";
+import Lottie from "react-lottie";
+import animationData from "lottie-web";
 import AnimationTeamwork from "../assets/animations/teamwork.json";
 import AnimationApproach from "../assets/animations/approach.json";
 
 const WhyChooseUs = () => {
   const { t } = useTranslation();
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   return (
     <div className="why-choose-us-section bg-black text-white">
@@ -62,10 +72,12 @@ const WhyChooseUs = () => {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 max-w-6xl mx-auto">
           <div className="w-full lg:w-1/2">
             <Lottie
-              animationData={AnimationTeamwork}
-              loop={true}
-              autoplay={true}
-              className="w-full h-auto max-w-md mx-auto"
+              options={{
+                ...defaultOptions,
+                animationData: AnimationTeamwork,
+              }}
+              height={400}
+              width={400}
             />
           </div>
           <p className="text-lg text-gray-300 text-center lg:text-left max-w-xl">
@@ -79,10 +91,12 @@ const WhyChooseUs = () => {
         <div className="flex flex-col lg:flex-row-reverse items-center justify-center gap-8 max-w-6xl mx-auto">
           <div className="w-full lg:w-1/2">
             <Lottie
-              animationData={AnimationApproach}
-              loop={true}
-              autoplay={true}
-              className="w-full h-auto max-w-md mx-auto"
+              options={{
+                ...defaultOptions,
+                animationData: AnimationApproach,
+              }}
+              height={400}
+              width={400}
             />
           </div>
           <p className="text-lg text-gray-300 text-center lg:text-left max-w-xl">
